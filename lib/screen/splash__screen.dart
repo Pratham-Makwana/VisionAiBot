@@ -1,7 +1,9 @@
+import 'package:ai_assistant/screen/onboarding_screen.dart';
+import 'package:ai_assistant/widget/custom_loading.dart';
 import 'package:flutter/material.dart';
 
 import '../helper/global.dart';
-import 'home_screen.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) => const HomeScreen()));
+          MaterialPageRoute(builder: (_) => const OnboardingScreen()));
     });
   }
 
@@ -26,20 +28,39 @@ class _SplashScreenState extends State<SplashScreen> {
     /// initializing device size
     mq = MediaQuery.sizeOf(context);
     return Scaffold(
-      body: Center(
-        child: Image.asset(
-          'assets/images/logo.png',
-          width: mq.width * .45,
+      /// body
+      body: SizedBox(
+        width: double.maxFinite,
+        child: Column(
+          children: [
+            /// for adding some space
+            const Spacer(
+              flex: 2,
+            ),
+
+            /// logo
+            Card(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              child: Padding(
+                padding: EdgeInsets.all(mq.width * .05),
+                child: Image.asset(
+                  'assets/images/chatbot.png',
+                  width: mq.width * .4,
+                ),
+              ),
+            ),
+
+            /// for adding some space
+            const Spacer(),
+
+            /// lottie loading
+            const CustomLoading(),
+
+            /// for adding some space
+            const Spacer(),
+          ],
         ),
-        /*child: Card(
-          color: Colors.deepPurple,
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20))),
-          child: Padding(
-            padding: EdgeInsets.all(mq.width * .05),
-            child: Image.asset('assets/images/chatbot.png', width: mq.width * .4),
-          ),
-        ),*/
       ),
     );
   }
