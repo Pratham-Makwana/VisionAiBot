@@ -1,3 +1,5 @@
+import 'package:ai_assistant/helper/pref.dart';
+import 'package:ai_assistant/widget/home_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -15,14 +17,46 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    Pref.showOnboarding = false;
   }
 
   @override
   Widget build(BuildContext context) {
     /// initializing device size
     mq = MediaQuery.sizeOf(context);
-    return const Scaffold(
-      body: Center(child: Text('Vision Bot')),
-    );
+    return Scaffold(
+        backgroundColor: Colors.white,
+
+        /// appbar
+        appBar: AppBar(
+          elevation: 10,
+          //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          centerTitle: true,
+          title: const Text(
+            appName,
+            style: TextStyle(
+                fontSize: 20,
+                //color: Colors.blue,
+                fontWeight: FontWeight.w500),
+          ),
+
+          /// actions
+          actions: [
+            IconButton(
+                padding: const EdgeInsets.only(right: 10),
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.brightness_4_rounded,
+                  //color: Colors.blue,
+                  size: 26,
+                ))
+          ],
+        ),
+
+        /// body
+        body: ListView(
+          padding: EdgeInsets.symmetric(horizontal: mq.width * .04,vertical: mq.height * .015),
+          children: const [HomeCard()],
+        ));
   }
 }
