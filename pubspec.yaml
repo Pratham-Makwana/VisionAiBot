@@ -32,6 +32,13 @@ dependencies:
   # For State Management
   get: ^4.6.6
 
+  # For Custom Animation
+  flutter_animate: ^4.5.0
+
+  # For Api Call
+  http: ^1.2.2
+  google_generative_ai: ^0.4.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -41,6 +48,8 @@ dev_dependencies:
 
   # For Changing App Icon
   icons_launcher: ^2.1.7
+
+
 
 
 flutter:

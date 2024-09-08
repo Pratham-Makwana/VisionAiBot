@@ -1,32 +1,78 @@
+import 'package:ai_assistant/model/home_type.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:lottie/lottie.dart';
 
 import '../helper/global.dart';
 
 class HomeCard extends StatelessWidget {
-  const HomeCard({super.key});
+  final HomeType homeType;
+
+  const HomeCard({super.key, required this.homeType});
 
   @override
   Widget build(BuildContext context) {
+    Animate.restartOnHotReload = true;
     return Card(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20))),
       elevation: 1,
-      child: Row(
-        children: [
-          Lottie.asset('assets/lottie/ai_hand_waving.json',
-              width: mq.width * .35),
-          const Spacer(),
+      margin: EdgeInsets.only(bottom: mq.height * .02),
+      child: homeType.leftAlign
+          ? Row(
+              children: [
+                /// lottie image
+                Container(
+                  padding: homeType.padding,
+                  width: mq.width * .35 ,
+                  child: Lottie.asset('assets/lottie/${homeType.lottie}'),
+                ),
 
-          /// title
-          const Text(
-            'Ai ChatBot',
-            style: TextStyle(
-                letterSpacing: 1, fontSize: 18, fontWeight: FontWeight.w500),
-          ),
-          const Spacer(flex: 2,),
-        ],
-      ),
-    );
+                /// for adding space
+                const Spacer(),
+
+                /// title
+                Text(
+                  homeType.title,
+                  style: const TextStyle(
+                      letterSpacing: 1,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ),
+
+                /// for adding space
+                const Spacer(
+                  flex: 2,
+                ),
+              ],
+            )
+          : Row(
+              children: [
+                /// for adding space
+                const Spacer(
+                  flex: 2,
+                ),
+
+                /// title
+                Text(
+                  homeType.title,
+                  style: const TextStyle(
+                      letterSpacing: 1,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ),
+
+                /// for adding space
+                const Spacer(),
+
+                /// lottie image
+                Container(
+                  width: mq.width * .35,
+                  padding: homeType.padding,
+                  child: Lottie.asset('assets/lottie/${homeType.lottie}'),
+                ),
+              ],
+            ),
+    ).animate().fade(duration: 1.seconds,curve: Curves.easeIn);
   }
 }
