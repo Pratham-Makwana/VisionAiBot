@@ -14,65 +14,68 @@ class HomeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Animate.restartOnHotReload = true;
     return Card(
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20))),
-      elevation: 1,
-      margin: EdgeInsets.only(bottom: mq.height * .02),
-      child: homeType.leftAlign
-          ? Row(
-              children: [
-                /// lottie image
-                Container(
-                  padding: homeType.padding,
-                  width: mq.width * .35 ,
-                  child: Lottie.asset('assets/lottie/${homeType.lottie}'),
-                ),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        elevation: 1,
+        margin: EdgeInsets.only(bottom: mq.height * .02),
+        child: InkWell(
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
+          onTap: homeType.onTap,
+          child: homeType.leftAlign
+              ? Row(
+                  children: [
+                    /// lottie image
+                    Container(
+                      padding: homeType.padding,
+                      width: mq.width * .35,
+                      child: Lottie.asset('assets/lottie/${homeType.lottie}'),
+                    ),
 
-                /// for adding space
-                const Spacer(),
+                    /// for adding space
+                    const Spacer(),
 
-                /// title
-                Text(
-                  homeType.title,
-                  style: const TextStyle(
-                      letterSpacing: 1,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500),
-                ),
+                    /// title
+                    Text(
+                      homeType.title,
+                      style: const TextStyle(
+                          letterSpacing: 1,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500),
+                    ),
 
-                /// for adding space
-                const Spacer(
-                  flex: 2,
-                ),
-              ],
-            )
-          : Row(
-              children: [
-                /// for adding space
-                const Spacer(
-                  flex: 2,
-                ),
+                    /// for adding space
+                    const Spacer(
+                      flex: 2,
+                    ),
+                  ],
+                )
+              : Row(
+                  children: [
+                    /// for adding space
+                    const Spacer(
+                      flex: 2,
+                    ),
 
-                /// title
-                Text(
-                  homeType.title,
-                  style: const TextStyle(
-                      letterSpacing: 1,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500),
-                ),
+                    /// title
+                    Text(
+                      homeType.title,
+                      style: const TextStyle(
+                          letterSpacing: 1,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500),
+                    ),
 
-                /// for adding space
-                const Spacer(),
+                    /// for adding space
+                    const Spacer(),
 
-                /// lottie image
-                Container(
-                  width: mq.width * .35,
-                  padding: homeType.padding,
-                  child: Lottie.asset('assets/lottie/${homeType.lottie}'),
+                    /// lottie image
+                    Container(
+                      width: mq.width * .35,
+                      padding: homeType.padding,
+                      child: Lottie.asset('assets/lottie/${homeType.lottie}'),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-    ).animate().fade(duration: 1.seconds,curve: Curves.easeIn);
+        )).animate().fade(duration: 1.seconds, curve: Curves.easeIn);
   }
 }

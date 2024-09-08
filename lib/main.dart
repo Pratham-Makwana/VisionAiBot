@@ -19,9 +19,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
         title: appName,
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
+            appBarTheme: const AppBarTheme(
+              elevation: 5,
+                centerTitle: true,
+                titleTextStyle:
+                    TextStyle(fontSize: 20,color: Colors.black, fontWeight: FontWeight.w500))),
         debugShowCheckedModeBanner: false,
-        home: SplashScreen());
+        home: const SplashScreen());
   }
 }

@@ -1,4 +1,8 @@
+import 'package:ai_assistant/screen/feature/chatbot_feature.dart';
+import 'package:ai_assistant/screen/feature/image_feature.dart';
+import 'package:ai_assistant/screen/feature/translator_feature.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 
 /// enum -> Special Variable With Predefined Constant Value (more like an Placeholder)
 enum HomeType { aiChatBot, aiImage, aiTranslator }
@@ -35,5 +39,11 @@ extension MyHomeType on HomeType {
         HomeType.aiChatBot => EdgeInsets.zero,
         HomeType.aiImage => const EdgeInsets.all(20),
         HomeType.aiTranslator => EdgeInsets.zero,
+      };
+/// for navigation
+  VoidCallback get onTap => switch (this) {
+        HomeType.aiChatBot => () => Get.to(() => const ChatBotFeature()),
+        HomeType.aiImage => () => Get.to(() => const ImageFeature()),
+        HomeType.aiTranslator => () => Get.to(() => const TranslatorFeature()),
       };
 }

@@ -28,22 +28,14 @@ class _HomeScreenState extends State<HomeScreen> {
     mq = MediaQuery.sizeOf(context);
 
     //sample api call
-    APIs.getAnswer('hii');
+    // APIs.getAnswer('hii');
     return Scaffold(
       backgroundColor: Colors.white,
 
       /// appbar
       appBar: AppBar(
-        elevation: 10,
-        //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         centerTitle: true,
-        title: const Text(
-          appName,
-          style: TextStyle(
-              fontSize: 20,
-              //color: Colors.blue,
-              fontWeight: FontWeight.w500),
-        ),
+        title: const Text(appName),
 
         /// actions
         actions: [
