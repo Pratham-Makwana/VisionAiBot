@@ -1,0 +1,75 @@
+import 'package:ai_assistant/model/message.dart';
+import 'package:flutter/material.dart';
+
+import '../helper/global.dart';
+
+class MessageCart extends StatelessWidget {
+  final Message message;
+
+  const MessageCart({super.key, required this.message});
+
+  @override
+  Widget build(BuildContext context) {
+    const radius = Radius.circular(15);
+    return message.msgType == MessageType.bot
+
+        /// ---------------- Bot ---------------------
+        ? Row(
+            children: [
+              const SizedBox(
+                width: 6,
+              ),
+              CircleAvatar(
+                radius: 18,
+                backgroundColor: Colors.white,
+                child: Image.asset(
+                  'assets/images/chatbot.png',
+                  width: 24,
+                ),
+              ),
+              Container(
+                  constraints: BoxConstraints(maxWidth: mq.width * .6),
+                  margin: EdgeInsets.only(bottom: mq.height * .02, left: mq.width * .02),
+                  padding: EdgeInsets.symmetric(vertical: mq.height * .01, horizontal: mq.width * .02),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black54),
+                      borderRadius: const BorderRadius.only(
+                          topLeft: radius,
+                          topRight: radius,
+                          bottomRight: radius)),
+                  child: Text(message.msg.trim()))
+            ],
+          )
+
+        /// ---------------- User ---------------------
+        : Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                  constraints: BoxConstraints(maxWidth: mq.width * .6),
+                  margin: EdgeInsets.only(
+                      bottom: mq.height * .02, right: mq.width * .02),
+                  padding: EdgeInsets.symmetric(
+                      vertical: mq.height * .01, horizontal: mq.width * .02),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black54),
+                      borderRadius: const BorderRadius.only(
+                          topLeft: radius,
+                          topRight: radius,
+                          bottomLeft: radius)),
+                  child: Text(message.msg)),
+              CircleAvatar(
+                radius: 18,
+                backgroundColor: Colors.white,
+                child: Image.asset(
+                  'assets/images/chatbot.png',
+                  width: 24,
+                ),
+              ),
+              const SizedBox(
+                width: 6,
+              ),
+            ],
+          );
+  }
+}

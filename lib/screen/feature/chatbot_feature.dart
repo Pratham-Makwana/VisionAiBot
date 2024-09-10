@@ -1,6 +1,9 @@
 import 'package:ai_assistant/controller/chat_controller.dart';
+import 'package:ai_assistant/widget/message_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../helper/global.dart';
 
 //
 class ChatBotFeature extends StatefulWidget {
@@ -31,12 +34,13 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
         child: Row(
           children: [
             /// text input field
-
             Expanded(
                 child: TextFormField(
               controller: _controller.textController,
               textAlign: TextAlign.center,
               decoration: const InputDecoration(
+                  fillColor: Colors.white,
+                  filled: true,
                   isDense: true,
                   hintText: 'Ask me anything you want...',
                   hintStyle: TextStyle(fontSize: 14),
@@ -68,7 +72,10 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
       /// body
       body: Obx(
         () => ListView(
-          children: _controller.list.map((e) => Text(e.msg)).toList(),
+          padding:
+              EdgeInsets.only(top: mq.height * .02, bottom: mq.height * .02),
+          children:
+              _controller.list.map((e) => MessageCart(message: e)).toList(),
         ),
       ),
     );
