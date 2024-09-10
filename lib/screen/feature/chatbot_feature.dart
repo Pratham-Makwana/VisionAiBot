@@ -1,5 +1,8 @@
+import 'package:ai_assistant/controller/chat_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+//
 class ChatBotFeature extends StatefulWidget {
   const ChatBotFeature({super.key});
 
@@ -8,6 +11,13 @@ class ChatBotFeature extends StatefulWidget {
 }
 
 class _ChatBotFeatureState extends State<ChatBotFeature> {
+  /// it create the single instance and use this instance in anyScreen by Get.find() method
+  /// Get.put() and Get.find() to use same controller in different screen
+  // final _controller = Get.put(ChatController());
+
+  /// it create one instance for one screen only
+  final _controller = ChatController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +34,7 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
 
             Expanded(
                 child: TextFormField(
+              controller: _controller.textController,
               textAlign: TextAlign.center,
               decoration: const InputDecoration(
                   isDense: true,
@@ -43,7 +54,7 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
             CircleAvatar(
               radius: 24,
               child: IconButton(
-                onPressed: () {},
+                onPressed: _controller.askQuestion,
                 icon: const Icon(
                   Icons.rocket_launch_rounded,
                   size: 28,
@@ -55,8 +66,10 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
       ),
 
       /// body
-      body: ListView(
-        children: [],
+      body: Obx(
+        () => ListView(
+          children: _controller.list.map((e) => Text(e.msg)).toList(),
+        ),
       ),
     );
   }
