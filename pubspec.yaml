@@ -37,7 +37,12 @@ dependencies:
 
   # For Api Call
   http: ^1.2.2
+
+  # Google Api
   google_generative_ai: ^0.4.6
+
+  # For Text Animation
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:

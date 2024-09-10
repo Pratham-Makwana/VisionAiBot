@@ -30,7 +30,7 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Row(
           children: [
             /// text input field
@@ -38,6 +38,7 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
                 child: TextFormField(
               controller: _controller.textController,
               textAlign: TextAlign.center,
+              onTapOutside: (e) => FocusScope.of(context).unfocus(),
               decoration: const InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
@@ -46,7 +47,6 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
                   hintStyle: TextStyle(fontSize: 14),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(50)))),
-              onTapOutside: (e) => FocusScope.of(context).unfocus(),
             )),
 
             /// for adding some space
@@ -72,8 +72,10 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
       /// body
       body: Obx(
         () => ListView(
+          physics: const BouncingScrollPhysics(),
+          controller: _controller.scrollController,
           padding:
-              EdgeInsets.only(top: mq.height * .02, bottom: mq.height * .02),
+              EdgeInsets.only(top: mq.height * .02, bottom: mq.height * .1),
           children:
               _controller.list.map((e) => MessageCart(message: e)).toList(),
         ),

@@ -1,4 +1,5 @@
 import 'package:ai_assistant/model/message.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 import '../helper/global.dart';
@@ -28,16 +29,31 @@ class MessageCart extends StatelessWidget {
                 ),
               ),
               Container(
-                  constraints: BoxConstraints(maxWidth: mq.width * .6),
-                  margin: EdgeInsets.only(bottom: mq.height * .02, left: mq.width * .02),
-                  padding: EdgeInsets.symmetric(vertical: mq.height * .01, horizontal: mq.width * .02),
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black54),
-                      borderRadius: const BorderRadius.only(
-                          topLeft: radius,
-                          topRight: radius,
-                          bottomRight: radius)),
-                  child: Text(message.msg.trim()))
+                constraints: BoxConstraints(maxWidth: mq.width * .6),
+                margin: EdgeInsets.only(
+                    bottom: mq.height * .02, left: mq.width * .02),
+                padding: EdgeInsets.symmetric(
+                    vertical: mq.height * .01, horizontal: mq.width * .02),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black54),
+                    borderRadius: const BorderRadius.only(
+                        topLeft: radius,
+                        topRight: radius,
+                        bottomRight: radius)),
+
+                // child:
+                child: message.msg.isEmpty
+                    ? AnimatedTextKit(
+                        animatedTexts: [
+                          TypewriterAnimatedText(
+                            'Please wait...',
+                            speed: const Duration(milliseconds: 100),
+                          ),
+                        ],
+                        repeatForever: true,
+                      )
+                    : Text(message.msg.trim(),) ,
+              ),
             ],
           )
 
