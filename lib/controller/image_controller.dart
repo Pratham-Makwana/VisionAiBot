@@ -10,6 +10,7 @@ import 'package:gallery_saver_updated/gallery_saver.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../helper/my_dialog.dart';
 
@@ -61,7 +62,6 @@ class ImageController extends GetxController {
       }
       url.value = imageList.first;
       status.value = Status.complete;
-      textController.text = '';
     } else {
       MyDialog.info('Provide some beautiful image description!');
     }
@@ -78,11 +78,13 @@ class ImageController extends GetxController {
       final bytes = (await get(Uri.parse(url.value))).bodyBytes;
       // 2. Path Provider to store those bytes as image in temp directory
       final dir = await getTemporaryDirectory();
+      // 3. creating a file called ai_image.png & writing all the bytes in it
+
       final file = await File('${dir.path}/ai_image.png').writeAsBytes(bytes);
 
       log('filepath : ${file.path}');
 
-      // 3. Using Gallery Saver With that path to store it in Gallery
+      // 4. Using Gallery Saver With that path to store it in Gallery
       // Save the Image To Gallery
       await GallerySaver.saveImage(file.path, albumName: appName)
           .then((success) {
@@ -91,6 +93,35 @@ class ImageController extends GetxController {
         MyDialog.success('Image Download to Gallery!');
       });
     } catch (e) {
+      Get.back();
+      MyDialog.error('Something Went Wrong (Try again in sometime');
+      log('downloadImageE: $e');
+    }
+  }
+
+  void shareImage() async {
+    try {
+      // To Show Loading
+      MyDialog.showLoadingDialog();
+
+      log('url: $url');
+
+      // 1.use  http to download image bytes
+      final bytes = (await get(Uri.parse(url.value))).bodyBytes;
+      // 2. Path Provider to store those bytes as image in temp directory
+      final dir = await getTemporaryDirectory();
+      // 3. creating a file called ai_image.png & writing all the bytes in it
+      final file = await File('${dir.path}/ai_image.png').writeAsBytes(bytes);
+
+      log('filepath : ${file.path}');
+
+      /// hide loading
+      Get.back();
+      await Share.shareXFiles([XFile(file.path)],
+          text:
+              'Check Out The Amazing Image Created by VisionAi By Pratham Makwana');
+    } catch (e) {
+      /// hide loading
       Get.back();
       MyDialog.error('Something Went Wrong (Try again in sometime');
       log('downloadImageE: $e');

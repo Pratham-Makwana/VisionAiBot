@@ -49,6 +49,9 @@ dependencies:
   # For Storing image to Gallery
   gallery_saver_updated: ^3.0.0
 
+  # For Sharing Image
+  share_plus: ^10.0.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

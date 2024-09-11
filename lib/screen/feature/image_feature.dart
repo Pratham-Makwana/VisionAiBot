@@ -23,6 +23,18 @@ class _ImageFeatureState extends State<ImageFeature> {
       /// appbar
       appBar: AppBar(
         title: const Text('AI Image Creator'),
+
+        /// share button
+        actions: [
+          Obx(
+            () => _controller.status.value == Status.complete
+                ? IconButton(
+                    padding: const EdgeInsets.only(right: 6),
+                    onPressed: _controller.shareImage,
+                    icon: const Icon(Icons.ios_share_rounded))
+                : const SizedBox(),
+          )
+        ],
       ),
 
       /// download image button
@@ -31,7 +43,7 @@ class _ImageFeatureState extends State<ImageFeature> {
             ? Padding(
                 padding: const EdgeInsets.only(right: 6, bottom: 6),
                 child: FloatingActionButton(
-                  onPressed: _controller.downloadImage ,
+                  onPressed: _controller.downloadImage,
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15))),
                   child: const Icon(Icons.save_alt_rounded, size: 26),
