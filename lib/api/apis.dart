@@ -1,11 +1,12 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'package:google_generative_ai/google_generative_ai.dart';
+import 'package:http/http.dart';
 import '../helper/apiKey.dart';
 
 class APIs {
   /// get answer for chat gpt
   /// Bearer is required most jwt(json web token) authorization feature
-  ///
 
   static Future<String> getAnswer(String question) async {
     try {
@@ -29,4 +30,21 @@ class APIs {
       return 'Something went wrong (Try again in sometime)';
     }
   }
+
+ static Future<List<String>> searchAiImages(String prompt) async {
+    try {
+      final res =
+          await get(Uri.parse('https://lexica.art/api/v1/search?q=$prompt'));
+
+      final date = jsonDecode(res.body);
+
+      return List.from(date['images']).map((e) => e['src'].toString()).toList();
+    } catch (e) {
+      log('searchAiImagesE: $e');
+      return [];
+    }
+  }
+
+
+
 }

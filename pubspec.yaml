@@ -34,15 +34,17 @@ dependencies:
 
   # For Custom Animation
   flutter_animate: ^4.5.0
+  animated_text_kit: ^4.2.2
 
   # For Api Call
   http: ^1.2.2
 
-  # Google Api
-  google_generative_ai: ^0.4.6
+  # For AI Image Generation
+  dart_openai: ^5.1.0
+  cached_network_image: ^3.4.1
 
-  # For Text Animation
-  animated_text_kit: ^4.2.2
+  # Google Gemini Ai Integration
+  google_generative_ai: ^0.4.6
 
 dev_dependencies:
   flutter_test:

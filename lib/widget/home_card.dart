@@ -14,6 +14,7 @@ class HomeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Animate.restartOnHotReload = true;
     return Card(
+        color: Colors.blue.withOpacity(.3),
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20))),
         elevation: 1,
@@ -40,6 +41,7 @@ class HomeCard extends StatelessWidget {
                       style: const TextStyle(
                           letterSpacing: 1,
                           fontSize: 18,
+
                           fontWeight: FontWeight.w500),
                     ),
 

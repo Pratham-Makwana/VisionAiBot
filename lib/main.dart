@@ -22,12 +22,15 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         title: appName,
         theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
+            useMaterial3: false,
             appBarTheme: const AppBarTheme(
-              elevation: 5,
-                centerTitle: true,
-                titleTextStyle:
-                    TextStyle(fontSize: 20,color: Colors.black, fontWeight: FontWeight.w500))),
+              elevation: 1,
+              centerTitle: true,
+              backgroundColor: Colors.white,
+              iconTheme: IconThemeData(color: Colors.blue),
+              titleTextStyle: TextStyle(
+                  color: Colors.blue, fontSize: 20, fontWeight: FontWeight.w500),
+            )),
         debugShowCheckedModeBanner: false,
         home: const SplashScreen());
   }
