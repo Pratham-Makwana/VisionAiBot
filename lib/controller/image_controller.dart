@@ -1,8 +1,15 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:ai_assistant/api/apis.dart';
 import 'package:ai_assistant/helper/apiKey.dart';
+import 'package:ai_assistant/helper/global.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:gallery_saver_updated/gallery_saver.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../helper/my_dialog.dart';
 
@@ -57,6 +64,36 @@ class ImageController extends GetxController {
       textController.text = '';
     } else {
       MyDialog.info('Provide some beautiful image description!');
+    }
+  }
+
+  void downloadImage() async {
+    try {
+      // To Show Loading
+      MyDialog.showLoadingDialog();
+
+      log('url: $url');
+
+      // 1.use  http to download image bytes
+      final bytes = (await get(Uri.parse(url.value))).bodyBytes;
+      // 2. Path Provider to store those bytes as image in temp directory
+      final dir = await getTemporaryDirectory();
+      final file = await File('${dir.path}/ai_image.png').writeAsBytes(bytes);
+
+      log('filepath : ${file.path}');
+
+      // 3. Using Gallery Saver With that path to store it in Gallery
+      // Save the Image To Gallery
+      await GallerySaver.saveImage(file.path, albumName: appName)
+          .then((success) {
+        // hide loading
+        Get.back();
+        MyDialog.success('Image Download to Gallery!');
+      });
+    } catch (e) {
+      Get.back();
+      MyDialog.error('Something Went Wrong (Try again in sometime');
+      log('downloadImageE: $e');
     }
   }
 }

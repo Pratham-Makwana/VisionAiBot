@@ -46,6 +46,9 @@ dependencies:
   # Google Gemini Ai Integration
   google_generative_ai: ^0.4.6
 
+  # For Storing image to Gallery
+  gallery_saver_updated: ^3.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

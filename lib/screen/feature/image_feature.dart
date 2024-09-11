@@ -25,18 +25,20 @@ class _ImageFeatureState extends State<ImageFeature> {
         title: const Text('AI Image Creator'),
       ),
 
-      floatingActionButton: Padding(
-          padding: const EdgeInsets.only(right: 6, bottom: 6),
-          child: FloatingActionButton(
-            onPressed: () {},
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(15))
-            ),
-            child: const Icon(
-              Icons.save_alt_rounded,
-              size: 26,
-            ),
-          )),
+      /// download image button
+      floatingActionButton: Obx(
+        () => _controller.status.value == Status.complete
+            ? Padding(
+                padding: const EdgeInsets.only(right: 6, bottom: 6),
+                child: FloatingActionButton(
+                  onPressed: _controller.downloadImage ,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                  child: const Icon(Icons.save_alt_rounded, size: 26),
+                ),
+              )
+            : const SizedBox(),
+      ),
 
       /// body
       body: ListView(
