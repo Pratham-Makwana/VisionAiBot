@@ -28,9 +28,10 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
       appBar: AppBar(
         title: const Text('Chat With Ai Assistant'),
       ),
+      ///send message field & btn
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Row(
           children: [
             /// text input field
@@ -77,9 +78,13 @@ class _ChatBotFeatureState extends State<ChatBotFeature> {
           padding:
               EdgeInsets.only(top: mq.height * .02, bottom: mq.height * .1),
           children:
-              _controller.list.map((e) => MessageCart(message: e)).toList(),
+              _controller.list.map((e) => MessageCard(message: e)).toList(),
         ),
       ),
     );
   }
 }
+
+
+
+

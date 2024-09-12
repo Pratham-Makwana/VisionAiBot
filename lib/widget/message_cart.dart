@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 import '../helper/global.dart';
 
-class MessageCart extends StatelessWidget {
+class MessageCard extends StatelessWidget {
   final Message message;
 
-  const MessageCart({super.key, required this.message});
+  const MessageCard({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MessageCart extends StatelessWidget {
                 width: 6,
               ),
               CircleAvatar(
-                radius: 18,
+                radius: 1,
                 backgroundColor: Colors.white,
                 child: Image.asset(
                   'assets/images/chatbot.png',
@@ -40,8 +40,6 @@ class MessageCart extends StatelessWidget {
                         topLeft: radius,
                         topRight: radius,
                         bottomRight: radius)),
-
-                // child:
                 child: message.msg.isEmpty
                     ? AnimatedTextKit(
                         animatedTexts: [
@@ -52,7 +50,9 @@ class MessageCart extends StatelessWidget {
                         ],
                         repeatForever: true,
                       )
-                    : Text(message.msg.trim(),) ,
+                    : Text(
+                        message.msg.trim(),
+                      ),
               ),
             ],
           )
@@ -74,14 +74,13 @@ class MessageCart extends StatelessWidget {
                           topRight: radius,
                           bottomLeft: radius)),
                   child: Text(message.msg)),
-              CircleAvatar(
-                radius: 18,
-                backgroundColor: Colors.white,
-                child: Image.asset(
-                  'assets/images/chatbot.png',
-                  width: 24,
-                ),
-              ),
+              const CircleAvatar(
+                  radius: 18,
+                  backgroundColor: Colors.white,
+                  child: Icon(
+                    Icons.person,
+                    color: Colors.blue,
+                  )),
               const SizedBox(
                 width: 6,
               ),

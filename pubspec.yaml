@@ -52,6 +52,9 @@ dependencies:
   # For Sharing Image
   share_plus: ^10.0.2
 
+  # For Google Language Translate
+  translator_plus: ^1.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
