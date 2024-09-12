@@ -14,7 +14,7 @@ class HomeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Animate.restartOnHotReload = true;
     return Card(
-        color: Colors.blue.withOpacity(.3),
+        color: Colors.blue.withOpacity(.2),
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20))),
         elevation: 1,

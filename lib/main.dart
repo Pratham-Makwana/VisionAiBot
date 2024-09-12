@@ -21,6 +21,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         title: appName,
+        themeMode: ThemeMode.light,
+
+        ///dark
+        darkTheme: ThemeData(
+            useMaterial3: false,
+            brightness: Brightness.dark,
+            appBarTheme: const AppBarTheme(
+              elevation: 1,
+              centerTitle: true,
+              titleTextStyle:
+                  TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+            )),
+
+        /// light
         theme: ThemeData(
             useMaterial3: false,
             appBarTheme: const AppBarTheme(
@@ -29,9 +43,19 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.white,
               iconTheme: IconThemeData(color: Colors.blue),
               titleTextStyle: TextStyle(
-                  color: Colors.blue, fontSize: 20, fontWeight: FontWeight.w500),
+                  color: Colors.blue,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500),
             )),
         debugShowCheckedModeBanner: false,
         home: const SplashScreen());
   }
+}
+
+extension AppTheme on ThemeData {
+  Color get lightTextColor =>
+      brightness == Brightness.dark ? Colors.white70 : Colors.black54;
+
+  Color get buttonColor =>
+      brightness == Brightness.dark ? Colors.cyan.withOpacity(.5) : Colors.blue;
 }

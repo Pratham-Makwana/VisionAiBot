@@ -1,3 +1,4 @@
+import 'package:ai_assistant/main.dart';
 import 'package:flutter/material.dart';
 import '../helper/global.dart';
 
@@ -12,16 +13,14 @@ class CustomBtn extends StatelessWidget {
     return Align(
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              minimumSize: Size(mq.width * .4, 50),
-              backgroundColor: Colors.blue,
               shape: const StadiumBorder(),
-              elevation: 0),
+              elevation: 0,
+              backgroundColor: Theme.of(context).buttonColor,
+              textStyle:
+              const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              minimumSize: Size(mq.width * .4, 50)),
           onPressed: onTap,
-          child: Text(
-            text,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 17, fontWeight: FontWeight.w500),
-          )),
+          child: Text(text)),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:ai_assistant/main.dart';
 import 'package:ai_assistant/model/message.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
@@ -21,12 +22,9 @@ class MessageCard extends StatelessWidget {
                 width: 6,
               ),
               CircleAvatar(
-                radius: 1,
+                radius: 18,
                 backgroundColor: Colors.white,
-                child: Image.asset(
-                  'assets/images/chatbot.png',
-                  width: 24,
-                ),
+                child: Image.asset('assets/images/chatbot.png', width: 24),
               ),
               Container(
                 constraints: BoxConstraints(maxWidth: mq.width * .6),
@@ -35,7 +33,7 @@ class MessageCard extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                     vertical: mq.height * .01, horizontal: mq.width * .02),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black54),
+                    border: Border.all(color:Theme.of(context).lightTextColor),
                     borderRadius: const BorderRadius.only(
                         topLeft: radius,
                         topRight: radius,
@@ -68,7 +66,7 @@ class MessageCard extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                       vertical: mq.height * .01, horizontal: mq.width * .02),
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black54),
+                      border: Border.all(color: Theme.of(context).lightTextColor),
                       borderRadius: const BorderRadius.only(
                           topLeft: radius,
                           topRight: radius,

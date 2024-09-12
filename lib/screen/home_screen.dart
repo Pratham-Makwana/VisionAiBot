@@ -30,7 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
     //sample api call
     // APIs.getAnswer('hii');
     return Scaffold(
-      backgroundColor: Colors.white,
 
       /// appbar
       appBar: AppBar(
