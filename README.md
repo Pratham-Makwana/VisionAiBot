@@ -1,6 +1,6 @@
-# ai_assistant
+# VisionAi
 
-An AI Assistant (ChatBot, Image Generator & Language Translator) App Based on ChatGPT developed by Pratham Makwana
+An Vision Ai Assistance (ChatBot, Image Generator & Language Translator) App Based on Google's Gemini developed by Pratham Makwana
 
 ## Getting Started
 
