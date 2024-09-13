@@ -1,3 +1,4 @@
+import 'package:ai_assistant/api/app_write.dart';
 import 'package:ai_assistant/helper/global.dart';
 import 'package:ai_assistant/helper/pref.dart';
 import 'package:ai_assistant/screen/splash__screen.dart';
@@ -7,7 +8,13 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  /// init hive
   Pref.initialize();
+
+  /// for appwrite initialization
+  //AppWrite.init();
+
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
@@ -21,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         title: appName,
-        themeMode: ThemeMode.light,
+        themeMode: Pref.defaultTheme(),
 
         ///dark
         darkTheme: ThemeData(

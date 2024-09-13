@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -14,27 +17,40 @@ class Pref {
     _box = Hive.box(name: 'myData');
 
     // await Hive.initFlutter();
-      // _box = await Hive.openBox('myData');
+    // _box = await Hive.openBox('myData');
   }
 
+  static bool get showOnboarding =>
+      _box.get('showOnboarding', defaultValue: true);
 
-    static bool get showOnboarding =>
-        _box.get('showOnboarding', defaultValue: true);
-    static set showOnboarding(bool v) => _box.put('showOnboarding', v);
+  static set showOnboarding(bool v) => _box.put('showOnboarding', v);
 
-    // Normal Way - Get
-    // how to call
-    // showOnboarding()
+  // Normal Way - Get
+  // how to call
+  // showOnboarding()
 
-    // static bool showOnboarding() {
-    //   return _box.get('showOnboarding', defaultValue: true);
-    // }
+  // static bool showOnboarding() {
+  //   return _box.get('showOnboarding', defaultValue: true);
+  // }
 
-    // Normal Way - Set
-    // how to call
-    // showOnboarding(false)
+  // Normal Way - Set
+  // how to call
+  // showOnboarding(false)
 
-    // static bool showOnboarding(bool v) {
-    //   _box.put('showOnboarding', v);
-    // }
+  // static bool showOnboarding(bool v) {
+  //   _box.put('showOnboarding', v);
+  // }
+
+  /// for storing theme data
+  static bool get isDarkMode => _box.get('isDarkMode') ?? false;
+
+  static set isDarkMode(bool v) => _box.put('isDarkMode', v);
+
+  static ThemeMode defaultTheme() {
+    final date = _box.get('isDarkMode');
+    log('data: $date');
+    if (date == null) return ThemeMode.system;
+    if (date == true) return ThemeMode.dark;
+    return ThemeMode.light;
+  }
 }
