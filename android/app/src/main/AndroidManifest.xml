@@ -6,6 +6,9 @@
     <!-- For Storage Access -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- For apps targeting Android 13 or higher & IMA SDK version 3.24.0 or lower -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+
     <application
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"

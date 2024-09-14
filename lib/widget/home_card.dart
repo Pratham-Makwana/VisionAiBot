@@ -1,3 +1,4 @@
+import 'package:ai_assistant/helper/ad_helper.dart';
 import 'package:ai_assistant/model/home_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -21,7 +22,9 @@ class HomeCard extends StatelessWidget {
         margin: EdgeInsets.only(bottom: mq.height * .02),
         child: InkWell(
           borderRadius: const BorderRadius.all(Radius.circular(20)),
-          onTap: homeType.onTap,
+          // onTap: homeType.onTap,
+          /// showing the facebook ads & in parameter its accept the callback function of the that which screen to move
+          onTap: () => AdHelper.showInterstitialAd(homeType.onTap),
           child: homeType.leftAlign
               ? Row(
                   children: [
@@ -41,7 +44,6 @@ class HomeCard extends StatelessWidget {
                       style: const TextStyle(
                           letterSpacing: 1,
                           fontSize: 18,
-
                           fontWeight: FontWeight.w500),
                     ),
 

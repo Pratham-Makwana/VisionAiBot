@@ -198,6 +198,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.1"
+  easy_audience_network:
+    dependency: "direct main"
+    description:
+      name: easy_audience_network
+      sha256: "3bd9f76785163e898683cf59d2c1799f8cd6d04afcd601dd981ced03763bbe93"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
   fake_async:
     dependency: transitive
     description:

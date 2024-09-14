@@ -57,6 +57,9 @@ dependencies:
   # For Google Language Translate
   translator_plus: ^1.0.1
 
+  # Facebook Ads:
+  easy_audience_network: ^0.0.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

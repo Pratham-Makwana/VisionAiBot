@@ -1,4 +1,5 @@
 import 'package:ai_assistant/api/app_write.dart';
+import 'package:ai_assistant/helper/ad_helper.dart';
 import 'package:ai_assistant/helper/global.dart';
 import 'package:ai_assistant/helper/pref.dart';
 import 'package:ai_assistant/screen/splash__screen.dart';
@@ -14,6 +15,9 @@ Future<void> main() async {
 
   /// for appwrite initialization
   //AppWrite.init();
+
+  /// for initialization facebook ads sdk
+  AdHelper.init();
 
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   await SystemChrome.setPreferredOrientations(

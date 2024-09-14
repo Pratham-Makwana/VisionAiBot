@@ -1,4 +1,5 @@
 import 'package:ai_assistant/api/apis.dart';
+import 'package:ai_assistant/helper/ad_helper.dart';
 import 'package:ai_assistant/helper/pref.dart';
 import 'package:ai_assistant/model/home_type.dart';
 import 'package:ai_assistant/widget/home_card.dart';
@@ -60,6 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ))
         ],
       ),
+
+      /// ----------------- FaceBook ADs --------------------
+      //bottomNavigationBar: AdHelper.nativeAd(),
+      bottomNavigationBar: AdHelper.nativeBannerAd(),
 
       /// body
       body: ListView(
