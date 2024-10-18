@@ -1,8 +1,8 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:ai_assistant/api/apiKey.dart';
 import 'package:ai_assistant/api/apis.dart';
-import 'package:ai_assistant/helper/apiKey.dart';
 import 'package:ai_assistant/helper/global.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flutter/cupertino.dart';

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
-import 'package:ai_assistant/helper/apiKey.dart';
+
+import 'package:ai_assistant/api/apiKey.dart';
 import 'package:appwrite/appwrite.dart';
 
 class AppWrite {

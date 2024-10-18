@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:ai_assistant/api/apiKey.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:http/http.dart';
 import 'package:translator_plus/translator_plus.dart';
-import '../helper/apiKey.dart';
-
 class APIs {
   /// get answer for chat gpt
   /// Bearer is required most jwt(json web token) authorization feature
